@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeeliciouscakes - Premium Bakery & Pastries</title>
+  <meta name="description" content="Premium celebration cakes and pastries made with love in Lagos, Nigeria">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  
+  <style>
+    /* CSS Reset & Base Styles */
+    :root {
+      --primary-color: #d6006e;
+      --secondary-color: #ff6f61;
+      --accent-color: #ff00cc;
+      --light-bg: #fff0f6;
+      --dark-text: #333;
+      --medium-text: #555;
+      --light-text: #777;
+      --white: #fff;
+      --light-gray: #f9f9f9;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark-text);
+      line-height: 1.6;
+      background-color: var(--white);
+    }
+    
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    button, input, textarea {
+      font-family: inherit;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .btn:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-color);
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      height: 100px;
+      width: 100px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-links a {
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary-color);
+    }
+    
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .cart-icon {
+      position: relative;
+      font-size: 1.2rem;
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: var(--secondary-color);
+      color: var(--white);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: 500px;
+      background-color: var(--light-bg);
+      padding: 60px 0;
+    }
+    
+    .hero-content {
+      flex: 1;
+      padding-right: 40px;
+    }
+    
+    .hero-content h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--medium-text);
+    }
+    
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    
+    /* Page Hero */
+    .page-hero {
+      text-align: center;
+      padding: 80px 0;
+      background-color: var(--light-bg);
+      color: var(--primary-color);
+    }
+    
+    .page-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .page-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Products Section */
+    .products-section {
+      padding: 80px 0;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .product-card {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-image {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 20px;
+    }
+    
+    .product-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    
+    .product-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: var(--dark-text);
+    }
+    
+    .add-to-cart {
+      width: 100%;
+      background-color: var(--secondary-color);
+    }
+    
+    .add-to-cart:hover {
+      background-color: #e65c50;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 0;
+      background-color: var(--light-gray);
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    
+    .contact-form {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-color);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    
+    .contact-icon {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-top: 3px;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark-text);
+      color: var(--white);
+      padding: 50px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 0 40px;
+      }
+      
+      .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+      
+      .nav-links {
+        gap: 20px;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 576px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html">
+          <img src="assets-removebg-preview.png" alt="Zeeliciouscakes Logo" class="logo">
+        </a>
+        
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cake">Celebration Cakes</a></li>
+          <li><a href="#pastries" class="active">Pastries</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="cart.html" class="cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="container" style="display: flex; align-items: center;">
+    <div class="hero-content">
+      <h1>Bringing Sweet Moments to Life</h1>
+      <p>Whimsical creations made with love for every celebration. Our premium cakes and pastries are crafted with the finest ingredients to delight your senses.</p>
+      <a href="#cake" class="btn">Explore Our Cakes</a>
+    </div>
+    <div class="hero-image">
+      <img src="assets-removebg-preview.png" alt="Beautiful celebration cake">
+    </div>
+  </div>
+</section>
+  <!-- Celebration Cakes Section -->
+  <section class="products-section" id="cake">
+    <div class="container">
+      <div class="section-title">
+        <h2>Celebration Cakes</h2>
+        <p>Indulge in beautifully crafted cakes for every celebration</p>
+      </div>
+      
+      <div class="products-grid">
+        <!-- Cake 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="c1.jpg" alt="Buttercream Dream Cake">
+          </div>
+          <div class="product-info">
+            <h3></h3>
+            <p class="product-price">₦55,000</p>
+            <button class="btn add-to-cart" data-id="1" data-name="Buttercream Dream" data-price="55000" data-image="assets/cake1.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Cake 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="c2.jpg" alt="Velvet Rose Cake">
+          </div>
+          <div class="product-info">
+            <h3></h3>
+            <p class="product-price">₦50,000</p>
+            <button class="btn add-to-cart" data-id="2" data-name="Velvet Rose" data-price="50000" data-image="assets/cake2.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Cake 3 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="c3.jpg" alt="Golden Delight Cake">
+          </div>
+          <div class="product-info">
+            <h3></h3>
+            <p class="product-price">₦18,500</p>
+            <button class="btn add-to-cart" data-id="3" data-name="Golden Delight" data-price="18500" data-image="assets/cake3.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Cake 4 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="c4.jpg" alt="Chocolate Bliss Cake">
+          </div>
+          <div class="product-info">
+            <h3></h3>
+            <p class="product-price">₦55,000</p>
+            <button class="btn add-to-cart" data-id="4" data-name="Chocolate Bliss" data-price="55000" data-image="assets/cake4.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Cake 5 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="c5.jpg" alt="Strawberry Heaven Cake">
+          </div>
+          <div class="product-info">
+            <h3></h3>
+            <p class="product-price">₦65,000</p>
+            <button class="btn add-to-cart" data-id="5" data-name="Strawberry Heaven" data-price="65000" data-image="assets/cake5.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Cake 6 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="cake.jpg" alt="Lemon Zest Cake">
+          </div>
+          <div class="product-info">
+            <h3></h3>
+            <p class="product-price">₦40,000</p>
+            <button class="btn add-to-cart" data-id="6" data-name="Lemon Zest" data-price="40000" data-image="assets/cake6.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pastries Section -->
+  <section class="page-hero" id="pastries">
+    <div class="container">
+      <h1>Our Pastries</h1>
+      <p>Delicious pastries baked fresh daily for every occasion</p>
+    </div>
+  </section>
+  
+  <section class="products-section">
+    <div class="container">
+      <div class="products-grid">
+        <!-- Pastry 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="d1.jpg" alt="Donut">
+          </div>
+          <div class="product-info">
+            <h3>Classic Donut</h3>
+            <p class="product-price">Box of 3</p>
+            <p class="product-price">₦5,000</p>
+            <button class="btn add-to-cart" data-id="7" data-name="Classic Donut" data-price="5000" data-image="assets/pastry1.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Pastry 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="d2.jpg" alt="Chocolate Donut">
+          </div>
+          <div class="product-info">
+            <h3>Chocolate Donut</h3>
+            <p class="product-price">Box of 3</p>
+            <p class="product-price">₦5,000</p>
+            <button class="btn add-to-cart" data-id="8" data-name="Chocolate Donut" data-price="6000" data-image="assets/pastry2.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Pastry 3 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="d3.jpg" alt="Strawberry Donut">
+          </div>
+          <div class="product-info">
+            <h3>Strawberry Donut</h3>
+            <p class="product-price">Box of 3</p>
+            <p class="product-price">₦5,000</p>
+            <button class="btn add-to-cart" data-id="9" data-name="Strawberry Donut" data-price="7000" data-image="assets/pastry3.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Pastry 4 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="s1.jpg" alt="Sausage Roll">
+          </div>
+          <div class="product-info">
+            <h3>Sausage Roll</h3>
+            <p class="product-price">Box of 3</p>
+            <p class="product-price">₦4,000</p>
+            <button class="btn add-to-cart" data-id="10" data-name="Sausage Roll" data-price="4000" data-image="assets/pastry4.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Pastry 5 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="m1.jpg" alt="Meat Pie">
+          </div>
+          <div class="product-info">
+            <h3>Meat Pie</h3>
+            <p class="product-price">Box of 3</p>
+            <p class="product-price">₦5,000</p>
+            <button class="btn add-to-cart" data-id="11" data-name="Meat Pie" data-price="5000" data-image="assets/pastry5.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Reach out for inquiries, orders, or feedback</p>
+      </div>
+      
+      <div class="contact-container">
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn submit-btn">Send Message</button>
+        </form>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h3>Phone</h3>
+              <p>+234 812 345 6789</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h3>Email</h3>
+              <p>info@zeeliciouscakes.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h3>Address</h3>
+              <p>123 Cake Street, Lagos, Nigeria</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <h3>Business Hours</h3>
+              <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Zeeliciouscakes</h3>
+          <p>Bringing sweet moments to life with our premium cakes and pastries crafted with love and the finest ingredients.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#cake">Celebration Cakes</a></li>
+            <li><a href="#pastries">Pastries</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Subscribe to our newsletter for updates and special offers.</p>
+          <form class="newsletter-form">
+            <div class="form-group">
+              <input type="email" placeholder="Your email address" required>
+            </div>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Zeeliciouscakes. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cart functionality
+      const cartButtons = document.querySelectorAll('.add-to-cart');
+      const cartCount = document.querySelector('.cart-count');
+      
+      // Initialize cart from localStorage
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      updateCartCount();
+      
+      // Add to cart event listeners
+      cartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const productId = this.dataset.id;
+          const productName = this.dataset.name;
+          const productPrice = parseFloat(this.dataset.price);
+          const productImage = this.dataset.image;
+          
+          // Check if product already in cart
+          const existingItem = cart.find(item => item.id === productId);
+          
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push({
+              id: productId,
+              name: productName,
+              price: productPrice,
+              image: productImage,
+              quantity: 1
+            });
+          }
+          
+          // Save to localStorage and update UI
+          saveCart();
+          updateCartCount();
+          
+          // Show notification
+          showNotification(`${productName} added to cart!`);
+        });
+      });
+      
+      // Save cart to localStorage
+      function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+      
+      // Update cart count in header
+      function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = count;
+        cartCount.style.display = count > 0 ? 'flex' : 'none';
+      }
+      
+      // Show notification
+      function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.right = '20px';
+        notification.style.backgroundColor = 'var(--primary-color)';
+        notification.style.color = 'white';
+        notification.style.padding = '15px 25px';
+        notification.style.borderRadius = '5px';
+        notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+        notification.style.zIndex = '1000';
+        notification.style.animation = 'slideIn 0.5s, fadeOut 0.5s 2.5s';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      }
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Active link highlighting
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
